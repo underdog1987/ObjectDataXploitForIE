@@ -1,0 +1,17 @@
+Demostración del Fallo Object Data
+
+Además de las imágenes, HTML permite incluir en las páginas web otros elementos mucho más complejos, como applets de Java y vídeos en formato QuickTime o Flash. La mayoría de este tipo de contenidos no los interpreta el navegador directamente, sino que hace uso de pequeños programas llamados plugins y que se encargan de tratar con este tipo de elementos complejos.
+
+La etiqueta <object> es la que permite incluir en las páginas HTML cualquier tipo de contenido complejo, sin embago al permitir insertar cualquiert tipo de contenido puede ser usada para insertar objetos no tan "amigables".
+
+Los navegadores bloquean cualquier tipo de contenido potencialmente peligroso insertado en la etiqueta <object>. Por ejemplo:
+
+<object data="pelicula.swf"> <!-- swf es "seguro", no se bloquea -->
+<object data="malware.exe"> <!-- exe es inseguro, se bloquea -->
+
+
+En Internet Explorer el fallo consiste en el mal tratamiento que se da a los atributos de la etiqueta Object, permitiendo que no se bloquee todo o parte del contenido potencialmente peligroso.
+
+En este ejemplo se muestra una supuesta imagen que descargará e intentará ejecutar un archivo de extensión VBS. Acualmente cualquier Windows (7, 8, 10) bloquea la ejecución de dicho archivo, pero si consideramos que este fallo fue descubierto en 2003, cuando se usaba Windows 9x, Win2k y el primer XP podemos imaginar la peligrosidad del mismo.
+
+Microsoft nunca corrigió del todo este fallo. En sus últimas versiones Internet Explorer pregunta si queremos guardar o ejecutar el archivo, pero en Internet Explorer 6 e inferiores se ejecutaba sin avisar al usuario.
